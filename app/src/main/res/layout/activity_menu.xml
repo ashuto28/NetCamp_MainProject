@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="#444"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.test.ashutosh.netcamp_mainproject.Menu">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ca5"
+        android:text="Music Player"
+        android:textSize="20dp"
+        android:textColor="#420"
+
+        android:layout_margin="3dp"
+        android:id="@+id/music_player"
+        android:layout_above="@+id/calculator"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ca5"
+        android:textColor="#420"
+        android:textSize="20dp"
+        android:text="Calculator"
+        android:layout_margin="3dp"
+
+        android:id="@+id/calculator"
+        android:layout_above="@+id/quiz"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ca5"
+        android:text="Quiz"
+        android:id="@+id/quiz"
+        android:textColor="#420"
+        android:textSize="20dp"
+        android:layout_margin="3dp"
+        android:layout_above="@+id/special_function"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ca5"
+        android:text="Special function"
+        android:textColor="#420"
+        android:textSize="20dp"
+        android:layout_margin="3dp"
+        android:id="@+id/special_function"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3"
+        android:src="@drawable/shiv"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/music_player" />
+
+</RelativeLayout>

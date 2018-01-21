@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>PostFixCalculator.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,0,255); }
+.s3 { color: rgb(128,128,128); font-style: italic; }
+.s4 { color: rgb(0,128,0); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+PostFixCalculator.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.test.ashutosh.netcamp_mainproject; 
+ 
+</span><span class="s0">import </span><span class="s1">java.math.BigDecimal; 
+</span><span class="s0">import </span><span class="s1">java.util.ArrayDeque; 
+</span><span class="s0">import </span><span class="s1">java.util.ArrayList; 
+</span><span class="s0">import </span><span class="s1">java.util.Deque; 
+</span><span class="s0">import </span><span class="s1">java.util.List; 
+ 
+ 
+</span><span class="s0">public class </span><span class="s1">PostFixCalculator { 
+    </span><span class="s0">private </span><span class="s1">List&lt;String&gt; expression = </span><span class="s0">new </span><span class="s1">ArrayList&lt;String&gt;(); 
+    </span><span class="s0">private </span><span class="s1">Deque&lt;Double&gt; stack = </span><span class="s0">new </span><span class="s1">ArrayDeque&lt;Double&gt;(); 
+ 
+    </span><span class="s0">public </span><span class="s1">PostFixCalculator(List&lt;String&gt; postfix) {expression = postfix;} 
+ 
+ 
+    </span><span class="s0">public </span><span class="s1">BigDecimal result() 
+    { 
+        </span><span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s1">; i != expression.size(); ++i) 
+        { 
+            </span><span class="s3">// Determine if current element is digit or not</span><span class="s1"> 
+            </span><span class="s0">if</span><span class="s1">(Character.isDigit(expression.get(i).charAt(</span><span class="s2">0</span><span class="s1">))) 
+            { 
+                stack.addLast(Double.parseDouble(expression.get(i))); 
+            } 
+            </span><span class="s0">else</span><span class="s1">  
+            { 
+                </span><span class="s0">double </span><span class="s1">tempResult = </span><span class="s2">0</span><span class="s1">; 
+                </span><span class="s0">double </span><span class="s1">temp; 
+ 
+                </span><span class="s0">switch</span><span class="s1">(expression.get(i)) 
+                { 
+                    </span><span class="s0">case </span><span class="s4">&quot;+&quot;</span><span class="s1">: temp = stack.removeLast(); 
+                              tempResult = stack.removeLast() + temp; 
+                              </span><span class="s0">break</span><span class="s1">; 
+ 
+                    </span><span class="s0">case </span><span class="s4">&quot;-&quot;</span><span class="s1">: temp = stack.removeLast(); 
+                              tempResult = stack.removeLast() - temp; 
+                              </span><span class="s0">break</span><span class="s1">; 
+ 
+                    </span><span class="s0">case </span><span class="s4">&quot;*&quot;</span><span class="s1">: temp = stack.removeLast(); 
+                              tempResult = stack.removeLast() * temp; 
+                              </span><span class="s0">break</span><span class="s1">; 
+ 
+                    </span><span class="s0">case </span><span class="s4">&quot;/&quot;</span><span class="s1">: temp = stack.removeLast(); 
+                              tempResult = stack.removeLast() / temp; 
+                              </span><span class="s0">break</span><span class="s1">; 
+                } 
+                stack.addLast(tempResult); 
+            } 
+        } 
+        </span><span class="s0">return new </span><span class="s1">BigDecimal(stack.removeLast()).setScale(</span><span class="s2">3</span><span class="s1">, BigDecimal.ROUND_HALF_UP); 
+    } 
+} 
+</span></pre>
+</body>
+</html>

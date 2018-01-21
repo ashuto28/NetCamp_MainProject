@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>Result.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,128,0); font-weight: bold; }
+.s3 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+Result.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.test.ashutosh.netcamp_mainproject; 
+ 
+</span><span class="s0">import </span><span class="s1">android.content.Intent; 
+</span><span class="s0">import </span><span class="s1">android.net.Uri; 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.webkit.WebView; 
+</span><span class="s0">import </span><span class="s1">android.widget.Button; 
+</span><span class="s0">import </span><span class="s1">android.widget.TextView; 
+ 
+</span><span class="s0">public class </span><span class="s1">Result </span><span class="s0">extends </span><span class="s1">AppCompatActivity { 
+    Button b1,b2,b3,b4; 
+    TextView t1; 
+ 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_result); 
+        b1 = (Button)findViewById(R.id.netcamp); 
+        b2 = (Button)findViewById(R.id.facebook); 
+        b3 = (Button)findViewById(R.id.google); 
+        b4 = (Button)findViewById(R.id.menu); 
+        t1 = (TextView)findViewById(R.id.result); 
+        t1.setText(t1.getText().toString()+Integer.toString(Quiz.score)); 
+ 
+        b1.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                Uri uri = Uri.parse(</span><span class="s2">&quot;http://www.netcamp.in&quot;</span><span class="s1">); 
+                Intent intent = </span><span class="s0">new </span><span class="s1">Intent(Intent.ACTION_VIEW, uri); 
+                startActivity(intent); 
+ 
+            } 
+        }); 
+        b2.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                Uri uri = Uri.parse(</span><span class="s2">&quot;http://www.google.com&quot;</span><span class="s1">); 
+                Intent intent = </span><span class="s0">new </span><span class="s1">Intent(Intent.ACTION_VIEW, uri); 
+                startActivity(intent); 
+ 
+            } 
+        }); 
+        b3.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                Uri uri = Uri.parse(</span><span class="s2">&quot;http://www.facebook.com&quot;</span><span class="s1">); 
+                Intent intent = </span><span class="s0">new </span><span class="s1">Intent(Intent.ACTION_VIEW, uri); 
+                startActivity(intent); 
+ 
+            } 
+        }); 
+        b4.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                Intent i = </span><span class="s0">new </span><span class="s1">Intent(getApplicationContext(),Menu.</span><span class="s0">class</span><span class="s1">); 
+                Quiz.score=</span><span class="s3">0</span><span class="s1">; 
+                startActivity(i); 
+                finish(); 
+            } 
+        }); 
+ 
+ 
+    } 
+} 
+</span></pre>
+</body>
+</html>

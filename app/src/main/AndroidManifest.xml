@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.test.ashutosh.netcamp_mainproject">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/splash" />
+        <activity
+            android:name=".Signup"
+            android:theme="@style/splash" />
+        <activity
+            android:name=".Calculator"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Splashscreen"
+            android:theme="@style/splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Menu"
+            android:theme="@style/splash" />
+        <activity
+            android:name=".Quiz"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Quiz1"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AshutoshQuiz1"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AshutoshQuiz2"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AshutoshQuiz3"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ShubhasiQuiz1"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ShubhasiQuiz2"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ShubhasiQuiz3"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PiyushQuiz1"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PiyushQuiz2"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PiyushQuiz3"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ManishaQuiz1"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ManishaQuiz2"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ManishaQuiz3"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Result"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".MusicPlayer"
+            android:theme="@style/splash" />
+        <activity
+            android:name=".Special"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Cam"
+            android:theme="@style/splash" />
+        <activity android:name=".AntiTheft"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,128,0); font-weight: bold; }
+.s3 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.test.ashutosh.netcamp_mainproject; 
+ 
+</span><span class="s0">import </span><span class="s1">android.content.Intent; 
+</span><span class="s0">import </span><span class="s1">android.database.Cursor; 
+</span><span class="s0">import </span><span class="s1">android.database.sqlite.SQLiteDatabase; 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.widget.Button; 
+</span><span class="s0">import </span><span class="s1">android.widget.EditText; 
+</span><span class="s0">import </span><span class="s1">android.widget.TextView; 
+</span><span class="s0">import </span><span class="s1">android.widget.Toast; 
+ 
+</span><span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity { 
+ 
+    EditText e1,e2; 
+    TextView t1; 
+    Button b1; 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_main); 
+        b1 = (Button)findViewById(R.id.login); 
+        t1 = (TextView)findViewById(R.id.signup); 
+        e1 = (EditText)findViewById(R.id.username); 
+        e2 = (EditText)findViewById(R.id.passwrod); 
+        b1.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                String s1 = e1.getText().toString().trim(); 
+                String s2 = e2.getText().toString(); 
+                </span><span class="s0">if</span><span class="s1">(s1.equals(</span><span class="s2">&quot;&quot;</span><span class="s1">)||s2.equals(</span><span class="s2">&quot;&quot;</span><span class="s1">)){ 
+                    Toast.makeText(MainActivity.</span><span class="s0">this</span><span class="s1">, </span><span class="s2">&quot;All field required&quot;</span><span class="s1">, Toast.LENGTH_SHORT).show(); 
+                } 
+                </span><span class="s0">else</span><span class="s1">{ 
+                    String table; 
+                    table = </span><span class="s2">&quot;create table if not exists student(username varchar,password varchar,email varchar, city varchar, phone varchar)&quot;</span><span class="s1">; 
+                    SQLiteDatabase data = openOrCreateDatabase(</span><span class="s2">&quot;ucer&quot;</span><span class="s1">,MODE_PRIVATE,</span><span class="s0">null</span><span class="s1">); 
+                    data.execSQL(table); 
+                    String query = </span><span class="s2">&quot;select * from student where username = '&quot;</span><span class="s1">+s1+</span><span class="s2">&quot;' and password = '&quot;</span><span class="s1">+s2+</span><span class="s2">&quot;'&quot;</span><span class="s1">; 
+                    Cursor cursor = data.rawQuery(query,</span><span class="s0">null</span><span class="s1">); 
+                    </span><span class="s0">if</span><span class="s1">(cursor.getCount()&gt;</span><span class="s3">0</span><span class="s1">){ 
+                        Intent i = </span><span class="s0">new </span><span class="s1">Intent(getApplicationContext(),Menu.</span><span class="s0">class</span><span class="s1">); 
+                        startActivity(i); 
+                        finish(); 
+                    } 
+                    </span><span class="s0">else</span><span class="s1">{ 
+                        Toast.makeText(MainActivity.</span><span class="s0">this</span><span class="s1">, </span><span class="s2">&quot;Failed to login try again or signup&quot;</span><span class="s1">, Toast.LENGTH_SHORT).show(); 
+                    } 
+ 
+                } 
+            } 
+        }); 
+        t1.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                Intent i = </span><span class="s0">new </span><span class="s1">Intent(getApplicationContext(),Signup.</span><span class="s0">class</span><span class="s1">); 
+                startActivity(i); 
+                finish(); 
+            } 
+        }); 
+ 
+ 
+ 
+ 
+    } 
+} 
+</span></pre>
+</body>
+</html>

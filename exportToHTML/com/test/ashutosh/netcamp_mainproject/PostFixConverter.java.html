@@ -1,0 +1,147 @@
+<html>
+<head>
+<title>PostFixConverter.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,0,255); }
+.s4 { color: rgb(0,128,0); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+PostFixConverter.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.test.ashutosh.netcamp_mainproject; 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.ArrayDeque; 
+</span><span class="s0">import </span><span class="s1">java.util.ArrayList; 
+</span><span class="s0">import </span><span class="s1">java.util.Deque; 
+</span><span class="s0">import </span><span class="s1">java.util.List; 
+ 
+ 
+</span><span class="s0">public class </span><span class="s1">PostFixConverter { 
+    </span><span class="s0">private </span><span class="s1">String infix; </span><span class="s2">// The infix expression to be converted</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">Deque&lt;Character&gt; stack = </span><span class="s0">new </span><span class="s1">ArrayDeque&lt;Character&gt;(); 
+    </span><span class="s0">private </span><span class="s1">List&lt;String&gt; postfix = </span><span class="s0">new </span><span class="s1">ArrayList&lt;String&gt;(); </span><span class="s2">// To hold the postfix expression</span><span class="s1"> 
+ 
+    </span><span class="s0">public </span><span class="s1">PostFixConverter(String expression) 
+    { 
+        infix = expression; 
+        convertExpression(); 
+    } 
+ 
+    </span><span class="s2">/* The approach is basically, if it's a number, push it to postfix list 
+     * else if it's an operator, push it to stack 
+     */</span><span class="s1"> 
+    </span><span class="s0">private void </span><span class="s1">convertExpression() 
+    { 
+        </span><span class="s2">// Temporary string to hold the number</span><span class="s1"> 
+        StringBuilder temp = </span><span class="s0">new </span><span class="s1">StringBuilder(); 
+ 
+        </span><span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s3">0</span><span class="s1">; i != infix.length(); ++i) 
+        {            
+            </span><span class="s0">if</span><span class="s1">(Character.isDigit(infix.charAt(i))) 
+            { 
+                </span><span class="s2">/* If we encounter a digit, read all digit next to it and append to temp 
+                 * until we encounter an operator. 
+                 */</span><span class="s1"> 
+                temp.append(infix.charAt(i)); 
+ 
+                </span><span class="s0">while</span><span class="s1">((i+</span><span class="s3">1</span><span class="s1">) != infix.length() &amp;&amp; (Character.isDigit(infix.charAt(i+</span><span class="s3">1</span><span class="s1">))  
+                                                  || infix.charAt(i+</span><span class="s3">1</span><span class="s1">) == </span><span class="s4">'.'</span><span class="s1">)) 
+                { 
+                    temp.append(infix.charAt(++i)); 
+                } 
+ 
+ 
+                </span><span class="s2">/* If the loop ends it means the next token is an operator or end of expression 
+                 * so we put temp into the postfix list and clear temp for next use 
+                 */</span><span class="s1"> 
+                postfix.add(temp.toString()); 
+                temp.delete(</span><span class="s3">0</span><span class="s1">, temp.length()); 
+            } 
+            </span><span class="s2">// Getting here means the token is an operator</span><span class="s1"> 
+            </span><span class="s0">else</span><span class="s1"> 
+                inputToStack(infix.charAt(i)); 
+        } 
+        clearStack(); 
+    } 
+ 
+ 
+    </span><span class="s0">private void </span><span class="s1">inputToStack(</span><span class="s0">char </span><span class="s1">input) 
+    { 
+        </span><span class="s0">if</span><span class="s1">(stack.isEmpty() || input == </span><span class="s4">'('</span><span class="s1">) 
+            stack.addLast(input); 
+        </span><span class="s0">else</span><span class="s1">  
+        { 
+            </span><span class="s0">if</span><span class="s1">(input == </span><span class="s4">')'</span><span class="s1">) 
+            { 
+                </span><span class="s0">while</span><span class="s1">(!stack.getLast().equals(</span><span class="s4">'('</span><span class="s1">)) 
+                { 
+                    postfix.add(stack.removeLast().toString()); 
+                } 
+                stack.removeLast(); 
+            } 
+            </span><span class="s0">else</span><span class="s1">  
+            { 
+                </span><span class="s0">if</span><span class="s1">(stack.getLast().equals(</span><span class="s4">'('</span><span class="s1">)) 
+                    stack.addLast(input); 
+                </span><span class="s0">else</span><span class="s1"> 
+                { 
+                    </span><span class="s0">while</span><span class="s1">(!stack.isEmpty() &amp;&amp; !stack.getLast().equals(</span><span class="s4">'('</span><span class="s1">) &amp;&amp;  
+                            getPrecedence(input) &lt;= getPrecedence(stack.getLast())) 
+                    { 
+                        postfix.add(stack.removeLast().toString()); 
+                    } 
+                    stack.addLast(input); 
+                } 
+            } 
+        } 
+    } 
+ 
+ 
+    </span><span class="s0">private int </span><span class="s1">getPrecedence(</span><span class="s0">char </span><span class="s1">op) 
+    { 
+         </span><span class="s0">if </span><span class="s1">(op == </span><span class="s4">'+' </span><span class="s1">|| op == </span><span class="s4">'-'</span><span class="s1">) 
+                </span><span class="s0">return </span><span class="s3">1</span><span class="s1">; 
+         </span><span class="s0">else if </span><span class="s1">(op == </span><span class="s4">'*' </span><span class="s1">|| op == </span><span class="s4">'/'</span><span class="s1">) 
+                </span><span class="s0">return </span><span class="s3">2</span><span class="s1">; 
+         </span><span class="s0">else if </span><span class="s1">(op == </span><span class="s4">'^'</span><span class="s1">) 
+                </span><span class="s0">return </span><span class="s3">3</span><span class="s1">; 
+         </span><span class="s0">else return </span><span class="s3">0</span><span class="s1">; 
+    } 
+ 
+ 
+    </span><span class="s0">private void </span><span class="s1">clearStack() 
+    { 
+        </span><span class="s0">while</span><span class="s1">(!stack.isEmpty()) 
+        { 
+            postfix.add(stack.removeLast().toString()); 
+        } 
+    } 
+ 
+ 
+    </span><span class="s0">public void </span><span class="s1">printExpression() 
+    { 
+        </span><span class="s0">for</span><span class="s1">(String str : postfix) 
+        { 
+            System.out.print(str + </span><span class="s4">' '</span><span class="s1">); 
+        } 
+    } 
+ 
+ 
+    </span><span class="s0">public </span><span class="s1">List&lt;String&gt; getPostfixAsList() 
+    { 
+        </span><span class="s0">return </span><span class="s1">postfix; 
+    } 
+} 
+</span></pre>
+</body>
+</html>

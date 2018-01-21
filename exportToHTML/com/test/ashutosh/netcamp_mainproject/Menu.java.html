@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Menu.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+Menu.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.test.ashutosh.netcamp_mainproject; 
+ 
+</span><span class="s0">import </span><span class="s1">android.content.Intent; 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.widget.Button; 
+ 
+</span><span class="s0">public class </span><span class="s1">Menu </span><span class="s0">extends </span><span class="s1">AppCompatActivity { 
+    Button b1,b2,b3,b4; 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_menu); 
+        b1 = (Button)findViewById(R.id.music_player); 
+        b2 = (Button)findViewById(R.id.calculator); 
+        b3 = (Button)findViewById(R.id.quiz); 
+        b4 = (Button)findViewById(R.id.special_function); 
+        b1.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                Intent i = </span><span class="s0">new </span><span class="s1">Intent(getApplicationContext(),MusicPlayer.</span><span class="s0">class</span><span class="s1">); 
+                startActivity(i); 
+                finish(); 
+            } 
+        }); 
+        b2.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                Intent i = </span><span class="s0">new </span><span class="s1">Intent(getApplicationContext(),Calculator.</span><span class="s0">class</span><span class="s1">); 
+                startActivity(i); 
+                finish(); 
+ 
+            } 
+        }); 
+        b3.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                Intent i = </span><span class="s0">new </span><span class="s1">Intent(getApplicationContext(),Quiz.</span><span class="s0">class</span><span class="s1">); 
+                startActivity(i); 
+                finish(); 
+            } 
+        }); 
+        b4.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                Intent i = </span><span class="s0">new </span><span class="s1">Intent(getApplicationContext(),Special.</span><span class="s0">class</span><span class="s1">); 
+                startActivity(i); 
+                finish(); 
+ 
+            } 
+        }); 
+    } 
+} 
+</span></pre>
+</body>
+</html>

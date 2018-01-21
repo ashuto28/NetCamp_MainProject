@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+
+
+
+    tools:context="com.test.ashutosh.netcamp_mainproject.MainActivity">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:background="#aaa"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NetCamp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:textColor="#333"
+            android:textStyle="italic"
+            android:textSize="35dp"
+            android:id="@+id/mainLogo"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainImage"
+            android:padding="5dp"
+            android:src="@mipmap/logo"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/mainLogo"
+            android:layout_marginStart="10dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/username"
+        android:hint="Enter username"
+        android:textColorHint="#aaaaaa"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:layout_above="@+id/passwrod"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="38dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/passwrod"
+        android:hint="Enter password"
+        android:textSize="20dp"
+        android:textColorHint="#aaaaaa"
+        android:gravity="center"
+        android:textColor="#000"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:background="#00aaff"
+        android:textColor="#fff"
+        android:id="@+id/login"
+        android:textSize="20dp"
+        android:layout_below="@+id/passwrod"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="44dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Not a member? Create account!"
+        android:gravity="right"
+        android:id="@+id/signup"
+        android:textColor="#00aaaa"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="20dp"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/login"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="158dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/netcamp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

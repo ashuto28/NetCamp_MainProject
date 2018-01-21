@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Splashscreen.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+Splashscreen.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.test.ashutosh.netcamp_mainproject; 
+ 
+</span><span class="s0">import </span><span class="s1">android.content.Intent; 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.view.animation.Animation; 
+</span><span class="s0">import </span><span class="s1">android.view.animation.AnimationUtils; 
+</span><span class="s0">import </span><span class="s1">android.widget.ImageView; 
+ 
+ 
+ 
+</span><span class="s0">public class </span><span class="s1">Splashscreen </span><span class="s0">extends </span><span class="s1">AppCompatActivity { 
+ 
+    ImageView iv; 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_splashscreen); 
+        iv = (ImageView) findViewById(R.id.imageView); 
+        Animation anim = AnimationUtils.loadAnimation(</span><span class="s0">this</span><span class="s1">,R.anim.animation); 
+        iv.startAnimation(anim); 
+        </span><span class="s0">final </span><span class="s1">Intent i = </span><span class="s0">new </span><span class="s1">Intent(getApplicationContext(),MainActivity.</span><span class="s0">class</span><span class="s1">); 
+        Thread th = </span><span class="s0">new </span><span class="s1">Thread(){ 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">run(){ 
+                </span><span class="s0">try </span><span class="s1">{ 
+                    sleep(</span><span class="s2">3000</span><span class="s1">); 
+                } </span><span class="s0">catch </span><span class="s1">(InterruptedException e) { 
+                    e.printStackTrace(); 
+ 
+                } 
+                </span><span class="s0">finally </span><span class="s1">{ 
+                    startActivity(i); 
+                    finish(); 
+                } 
+ 
+            } 
+        }; 
+        th.start(); 
+ 
+ 
+    } 
+} 
+ 
+</span></pre>
+</body>
+</html>
